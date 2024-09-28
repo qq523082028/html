@@ -4,40 +4,40 @@ import dayjs from "dayjs";
 
 // 时钟
 export const getCurrentTime = () => {
-  let time = new Date();
-  let year = time.getFullYear();
-  let month = time.getMonth() + 1 < 10 ? "0" + (time.getMonth() + 1) : time.getMonth() + 1;
-  let day = time.getDate() < 10 ? "0" + time.getDate() : time.getDate();
-  let hour = time.getHours() < 10 ? "0" + time.getHours() : time.getHours();
-  let minute = time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes();
-  let second = time.getSeconds() < 10 ? "0" + time.getSeconds() : time.getSeconds();
+  让 时间=新日期（）；
+  设 年=时间。获取完整年份( ) ;
+  让 月份=时间。getMonth ( ) + 1 < 10 ? " 0" + ( time.getMonth ( ) + 1 ) : 时间。getMonth ( ) + 1 ;
+  让 天=时间。getDate ( ) < 10 ? “0” +时间。getDate ( )：时间。获取日期（）；
+  让 小时=时间。getHours ( ) < 10 ? “0” +时间。getHours ( )：时间。获取时间（）；
+  让 分钟=时间。getMinutes ( ) < 10 ? “0” +时间。getMinutes ( )：时间。获取分钟数( ) ;
+  让 秒=时间。getSeconds ( ) < 10 ? “0” +时间。getSeconds ( )：时间。getSeconds ( ) ;
   let weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
-  let currentTime = {
-    year,
-    month,
-    day,
-    hour,
-    minute,
-    second,
-    weekday: weekday[time.getDay()],
-  };
-  return currentTime;
-};
+  让 当前时间= {
+    年，
+    月，
+    天，
+    小时，
+    分钟，
+    第二，
+    工作日: 工作日[时间。getDay ( ) ] ,
+  } ;
+  返回当前时间；
+} ;
 
 // 时光胶囊
-export const getTimeCapsule = () => {
-  const now = dayjs();
-  const dayText = {
-    day: "今日",
+导出 const  getTimeCapsule = ( ) => {
+  const  now = dayjs ( ) ;
+  常量 日文本= {
+    日复一日”，​
     week: "本周",
     month: "本月",
     year: "本年",
-  };
+  } ;
   /**
    * 计算时间差的函数
    * @param {String} unit 时间单位，可以是 'day', 'week', 'month', 'year'
    */
-  const getDifference = (unit) => {
+  const  getDifference = (单位) => {
     // 获取当前时间单位的开始时间
     const start = now.startOf(unit);
     // 获取当前时间单位的结束时间
@@ -49,19 +49,19 @@ export const getTimeCapsule = () => {
     if (unit === "week") {
       passed = (passed + 6) % 7;
     }
-    const remaining = total - passed;
-    const percentage = (passed / total) * 100;
+    const 剩余= 总计 - 通过；
+    const 百分比= (通过 / 总数) * 100 ;
     // 返回数据
-    return {
-      name: dayText[unit],
-      total: total,
-      passed: passed,
-      remaining: remaining,
-      percentage: percentage.toFixed(2),
-    };
-  };
-  return {
-    day: getDifference("day"),
+    返回 {
+      名称：dayText [单位]，
+      总计：总计，
+      通过：通过，
+      剩余：剩余，
+      百分比：百分比。至固定( 2 ) ,
+    } ;
+  } ;
+  返回 {
+    天：getDifference （“天” ），
     week: getDifference("week"),
     month: getDifference("month"),
     year: getDifference("year"),
